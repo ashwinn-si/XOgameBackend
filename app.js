@@ -149,6 +149,10 @@ io.on("connection", (socket) => {
         const roomID = parseInt(data1.roomID)
         const data = await GameDetailsModel.findOne({roomID : roomID});
         const name = data.player2Name;
+        await GameDetailsModel.findOneAndUpdate({roomID : roomID},{
+            roomID : 0,
+            winner : name
+        })
         socket.to(roomID).emit("sendPlayerName",{name})
     })
 });

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const mongoURI = "mongodb+srv://root:n0SFsK3VoT2p2Box@detailscluster.hu83z.mongodb.net/XOgame?retryWrites=true&w=majority&appName=DetailsCluster";
+const mongoURI = process.env.mongoURI;
 
 mongoose.connect(mongoURI).then(() => {
     console.log("Connected to Database");
